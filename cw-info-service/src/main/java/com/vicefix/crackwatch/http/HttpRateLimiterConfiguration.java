@@ -9,6 +9,7 @@ import io.github.bucket4j.Refill;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -37,8 +38,8 @@ public class HttpRateLimiterConfiguration implements WebMvcConfigurer {
     }
 
     @Bean
-    public HttpClient httpClient() {
-        return HttpClient.newHttpClient();
+    public RestTemplate httpClient() {
+        return new RestTemplate();
     }
 
     @Override
