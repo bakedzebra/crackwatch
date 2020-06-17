@@ -10,5 +10,9 @@ public class InfoWebDefinitions {
     public static final String IS_RELEASED_QUERY_PARAM = "isReleased";
     public static final String IS_CRACKED_QUERY_PARAM = "isCracked";
 
-    private InfoWebDefinitions() {}
+    public static final String GAMES_RESOURCE = "/games";
+
+    private InfoWebDefinitions() {
+        //hidden
+    }
 }

@@ -11,7 +11,7 @@ public class HttpUtils {
     }
 
     public static class QueryParametersBuilder {
-        private Map<String, Object> queryParameters;
+        private final Map<String, Object> queryParameters;
 
         private QueryParametersBuilder() {
             //hidden

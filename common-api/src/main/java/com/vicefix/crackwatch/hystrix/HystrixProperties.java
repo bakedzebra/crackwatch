@@ -4,7 +4,7 @@ public final class HystrixProperties {
     public static class Execution {
         /**
          * This property indicates which isolation strategy HystrixCommand.run() executes with, one of the following two choices:
-         *
+         * <p>
          * THREAD — it executes on a separate thread and concurrent requests are limited by the number of threads in the thread-pool
          * SEMAPHORE — it executes on the calling thread and concurrent requests are limited by the semaphore count
          */
@@ -39,7 +39,7 @@ public final class HystrixProperties {
     public static class Fallback {
         /**
          * This property sets the maximum number of requests a HystrixCommand.getFallback() method is allowed to make from the calling thread.
-         *
+         * <p>
          * If the maximum concurrent limit is hit then subsequent requests will be rejected and an exception thrown since no fallback could be retrieved.
          */
         public static final String MAX_CONCURRENT_REQUESTS = "fallback.isolation.semaphore.maxConcurrentRequests";
@@ -58,7 +58,7 @@ public final class HystrixProperties {
 
         /**
          * This property sets the minimum number of requests in a rolling window that will trip the circuit.
-         *
+         * <p>
          * For example, if the value is 20, then if only 19 requests are received in the rolling window (say a window of 10 seconds) the circuit will not trip open even if all 19 failed.
          */
         public static final String REQUEST_VOLUME_THRESHOLD = "circuitBreaker.requestVolumeThreshold";
@@ -75,14 +75,14 @@ public final class HystrixProperties {
 
         /**
          * This property, if true, forces the circuit breaker into an open (tripped) state in which it will reject all requests.
-         *
+         * <p>
          * This property takes precedence over circuitBreaker.forceClosed.
          */
         public static final String FORCE_OPEN = "circuitBreaker.forceOpen";
 
         /**
          * This property, if true, forces the circuit breaker into a closed state in which it will allow requests regardless of the error percentage.
-         *
+         * <p>
          * The circuitBreaker.forceOpen property takes precedence so if it is set to true this property does nothing.
          */
         public static final String FORCE_CLOSED = "circuitBreaker.forceClosed";
@@ -97,7 +97,7 @@ public final class HystrixProperties {
 
         /**
          * This property sets the number of buckets the rolling statistical window is divided into.
-         *
+         * <p>
          * Note: The following must be true — “metrics.rollingStats.timeInMilliseconds % metrics.rollingStats.numBuckets == 0” — otherwise it will throw an exception.
          */
         public static final String STATS_NUM_BUCKETS = "metrics.rollingStats.numBuckets";
@@ -114,23 +114,23 @@ public final class HystrixProperties {
 
         /**
          * This property sets the number of buckets the rollingPercentile window will be divided into.
-         *
+         * <p>
          * Note: The following must be true — “metrics.rollingPercentile.timeInMilliseconds % metrics.rollingPercentile.numBuckets == 0” — otherwise it will throw an exception.
          */
         public static final String PERCENTILE_NUM_BUCKETS = "metrics.rollingPercentile.numBuckets";
 
         /**
          * This property sets the maximum number of execution times that are kept per bucket. If more executions occur during the time they will wrap around and start over-writing at the beginning of the bucket.
-         *
+         * <p>
          * For example, if bucket size is set to 100 and represents a bucket window of 10 seconds, but 500 executions occur during this time, only the last 100 executions will be kept in that 10 second bucket.
-         *
+         * <p>
          * If you increase this size, this also increases the amount of memory needed to store values and increases the time needed for sorting the lists to do percentile calculations.
          */
         public static final String PERCENTILE_BUCKET_SIZE = "metrics.rollingPercentile.bucketSize";
 
         /**
          * This property sets the time to wait, in milliseconds, between allowing health snapshots to be taken that calculate success and error percentages and affect circuit breaker status.
-         *
+         * <p>
          * On high-volume circuits the continual calculation of error percentages can become CPU intensive thus this property allows you to control how often it is calculated.
          */
         public static final String HEALTH_INTERVAL_IN_MS = "metrics.healthSnapshot.intervalInMilliseconds";

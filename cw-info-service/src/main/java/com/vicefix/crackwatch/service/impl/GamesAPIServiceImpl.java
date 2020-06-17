@@ -1,6 +1,7 @@
 package com.vicefix.crackwatch.service.impl;
 
 import com.vicefix.crackwatch.http.HttpUtils;
+import com.vicefix.crackwatch.http.annotations.RateLimited;
 import com.vicefix.crackwatch.model.GameDto;
 import com.vicefix.crackwatch.model.enums.SortByOption;
 import com.vicefix.crackwatch.service.GamesAPIService;
@@ -10,7 +11,6 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 import static com.vicefix.crackwatch.utils.CommonUtils.cast;
 
@@ -35,6 +35,7 @@ public class GamesAPIServiceImpl implements GamesAPIService {
     }
 
     @Override
+    @RateLimited
     public List<GameDto> getGames(Integer page, SortByOption sortBy, Boolean isSortInverted,
                                   Boolean isAAA, Boolean isReleased, Boolean isCracked) {
 

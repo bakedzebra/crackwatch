@@ -12,7 +12,7 @@ import static com.vicefix.crackwatch.web.InfoWebDefinitions.*;
 
 public interface InfoController {
 
-    @GetMapping("/games")
+    @GetMapping(GAMES_RESOURCE)
     ResponseEntity<List<GameDto>> getGames(@RequestParam(value = PAGE_QUERY_PARAM, required = false) Integer page,
                                            @RequestParam(value = SORT_BY_QUERY_PARAM, required = false) SortByOption sortBy,
                                            @RequestParam(value = IS_SORT_INVERTED_QUERY_PARAM, required = false) Boolean isSortInverted,
