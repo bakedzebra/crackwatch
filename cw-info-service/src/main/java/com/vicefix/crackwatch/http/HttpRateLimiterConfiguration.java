@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import java.net.http.HttpClient;
 import java.time.Duration;
 
 @Configuration
@@ -33,6 +34,11 @@ public class HttpRateLimiterConfiguration implements WebMvcConfigurer {
         return Bucket4j.builder()
                 .addLimit(Bandwidth.classic(capacity, Refill.greedy(tokensAllowed, Duration.ofMillis(period))))
                 .build();
+    }
+
+    @Bean
+    public HttpClient httpClient() {
+        return HttpClient.newHttpClient();
     }
 
     @Override
