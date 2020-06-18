@@ -47,7 +47,7 @@ public class InfoControllerITTest {
     }
 
     @Test
-    public void greetingShouldReturnDefaultMessage() {
+    public void testHttpBucketWorkflow() {
         when(httpClient.getForEntity(anyString(), any(), anyMap())).thenReturn(new ResponseEntity<>(List.of(), HttpStatus.OK));
 
         List<HttpStatus> statuses = Stream.of(getForGamesList(), getForGamesList())

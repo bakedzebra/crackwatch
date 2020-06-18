@@ -10,9 +10,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class ClientExceptionHandler {
 
-    @ExceptionHandler(value = BucketFullException.class)
-    public ResponseEntity<String> handleBucketFullException(
-            BucketFullException e) {
+    @ExceptionHandler(BucketFullException.class)
+    public ResponseEntity<String> handleBucketFullException(BucketFullException e) {
 
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add("X-Rate-Limit-Retry-After-Milliseconds", Long.toString(e.getWaitForRefillTime()));

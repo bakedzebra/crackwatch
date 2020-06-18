@@ -25,3 +25,8 @@ http:
 
 cw:
   baseUrl: https://api.crackwatch.com/api
+
+cache:
+  games:
+    getGames:
+      name: getGamesCache

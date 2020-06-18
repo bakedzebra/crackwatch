@@ -6,6 +6,7 @@ import com.vicefix.crackwatch.model.GameDto;
 import com.vicefix.crackwatch.model.enums.SortByOption;
 import com.vicefix.crackwatch.service.GamesAPIService;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -36,6 +37,7 @@ public class GamesAPIServiceImpl implements GamesAPIService {
 
     @Override
     @RateLimited
+    @Cacheable("${cache.games.getGames.name}")
     public List<GameDto> getGames(Integer page, SortByOption sortBy, Boolean isSortInverted,
                                   Boolean isAAA, Boolean isReleased, Boolean isCracked) {
 
