@@ -15,6 +15,9 @@ public class RateLimitedAspect {
     @Value("${http.rateLimiter.tokensAllowed}")
     private int tokensAllowed;
 
+    @Value("${http.rateLimiter.period}")
+    private long period;
+
     private final Bucket bucket;
 
     public RateLimitedAspect(Bucket bucket) {
@@ -26,6 +29,15 @@ public class RateLimitedAspect {
         ConsumptionProbe probe = this.bucket.tryConsumeAndReturnRemaining(tokensAllowed);
         if (!probe.isConsumed()) {
             throw new BucketFullException("This API is time limited. Request token is not free yet.", probe.getNanosToWaitForRefill());
+        }
+    }
+
+    @Before("@annotation(com.vicefix.crackwatch.http.annotations.RateLimitSleep)")
+    public void waitForToken(JoinPoint joinPoint) throws InterruptedException {
+        ConsumptionProbe probe = this.bucket.tryConsumeAndReturnRemaining(tokensAllowed);
+        while (!probe.isConsumed()) {
+            Thread.sleep(period);
+            probe = this.bucket.tryConsumeAndReturnRemaining(tokensAllowed);
         }
     }
 

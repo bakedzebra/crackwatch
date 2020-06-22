@@ -14,7 +14,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableHystrixModule
-@EnableCaching
 @EnableScheduling
 public class InfoBootApplication {
 

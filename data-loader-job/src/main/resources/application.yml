@@ -1,0 +1,21 @@
+---
+server:
+  port: 8090
+
+http:
+  rateLimiter:
+    capacity: 1
+    tokensAllowed: 1
+    period: 1800
+
+cw:
+  baseUrl: https://api.crackwatch.com/api
+
+spring:
+  application:
+    name: data-loader-job
+  data:
+    mongodb:
+      host: 127.0.0.1
+      port: 27017
+      database: crackwatch

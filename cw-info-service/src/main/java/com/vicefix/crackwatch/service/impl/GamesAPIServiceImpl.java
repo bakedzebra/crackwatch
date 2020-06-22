@@ -36,8 +36,6 @@ public class GamesAPIServiceImpl implements GamesAPIService {
     }
 
     @Override
-    @RateLimited
-    @Cacheable("${cache.games.getGames.name}")
     public List<GameDto> getGames(Integer page, SortByOption sortBy, Boolean isSortInverted,
                                   Boolean isAAA, Boolean isReleased, Boolean isCracked) {
 
